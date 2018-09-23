@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Home {
     private Long id;
-    private String houseName;
+    private String homeName;
     private ApplicationUser user;
 
     @Id
@@ -19,12 +19,12 @@ public class Home {
         this.id = i;
     }
 
-    public String getHouseName() {
-        return houseName;
+    public String getHomeName() {
+        return homeName;
     }
 
-    public void setHouseName(String houseName) {
-        this.houseName = houseName;
+    public void setHomeName(String homeName) {
+        this.homeName = homeName;
     }
 
     @ManyToOne
