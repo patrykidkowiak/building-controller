@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("/api/v1")
 public class RoomController {
     private BaseRoomService baseRoomService;
     private BaseHomeService baseHomeService;
@@ -39,7 +39,7 @@ public class RoomController {
     }
 
     @GetMapping(path = "/rooms/{homeId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Collection<Room>> getAllRooms(Authentication authentication, @PathVariable Long homeId) {
+    public ResponseEntity<Collection<Room>> getAllRooms(@PathVariable Long homeId) {
         System.out.println("rooms");
         return ResponseEntity.ok(baseRoomService.findRoomByHomeId(homeId));
     }
