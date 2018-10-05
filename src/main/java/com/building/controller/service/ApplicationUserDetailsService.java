@@ -19,6 +19,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
 
   private final ApplicationUserRepository applicationUserRepository;
 
+
   @Override
   public UserDetails loadUserByUsername(String email) {
     ApplicationUser applicationUser =

@@ -19,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 
 @Service
 @RequiredArgsConstructor
+
 public class AuthenticationService {
     private final ApplicationUserRepository applicationUserRepository;
     private final ConversionService conversionService;

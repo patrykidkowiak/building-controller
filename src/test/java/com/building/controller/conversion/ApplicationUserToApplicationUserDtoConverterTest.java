@@ -1,6 +1,5 @@
 package com.building.controller.conversion;
 
-import com.building.controller.conversion.ApplicationUserToApplicationUserDtoConverter;
 import com.building.controller.dto.ApplicationUserDto;
 import com.building.controller.model.ApplicationUser;
 import org.junit.Before;

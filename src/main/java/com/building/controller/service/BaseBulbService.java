@@ -1,9 +1,11 @@
 package com.building.controller.service;
 
+import com.building.controller.exception.BulbNotFoundException;
 import com.building.controller.exception.HomeNotFoundException;
-import com.building.controller.model.Home;
+import com.building.controller.model.Bulb;
 import com.building.controller.model.Room;
-import com.building.controller.repository.RoomRepository;
+import com.building.controller.repository.BulbRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,36 +13,34 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class BaseRoomService implements RoomService {
-    private final RoomRepository roomRepository;
+@AllArgsConstructor
+public class BaseBulbService implements BulbService {
+    private final BulbRepository bulbRepository;
 
-    public BaseRoomService(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
+    @Override
+    public Bulb findBulbById(long id) {
+        return bulbRepository.findById(id).orElseThrow(BulbNotFoundException::new);
     }
 
     @Override
-    public Room findRoomById(long id) {
-        return roomRepository.findById(id).orElseThrow(HomeNotFoundException::new);
+    public Collection<Bulb> findBulbsByRoomId(long id) {
+        Iterable<Bulb> all = this.bulbRepository.findByRoomId(id);
+        List<Bulb> bulbList = new ArrayList<>();
+        all.forEach(bulbList::add);
+        return bulbList;
     }
 
     @Override
-    public Collection<Room> findRoomByHomeId(long id) {
-        Iterable<Room> all = this.roomRepository.findByHomeId(id);
-        List<Room> roomList = new ArrayList<>();
-        all.forEach(roomList::add);
-        return roomList;
+    public void saveBulb(Bulb bulb) {
+        this.bulbRepository.save(bulb);
     }
 
     @Override
-    public void saveRoom(Room room) {
-        this.roomRepository.save(room);
-    }
-
-    @Override
-    public void update(Room room) {
-        if (room.getId() == null || !this.roomRepository.existsById(room.getId())) {
-            throw new HomeNotFoundException();
+    public void update(Bulb bulb) {
+        System.out.println(bulb.getId());
+        if (bulb.getId() == null || !this.bulbRepository.existsById(bulb.getId())) {
+            throw new BulbNotFoundException();
         }
-        this.roomRepository.save(room);
+        this.bulbRepository.save(bulb);
     }
 }

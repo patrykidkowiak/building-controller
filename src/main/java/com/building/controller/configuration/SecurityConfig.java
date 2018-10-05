@@ -2,6 +2,7 @@ package com.building.controller.configuration;
 
 import com.building.controller.service.ApplicationUserDetailsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,13 +16,20 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
-@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final ApplicationUserDetailsService applicationUserDetailsService;
     private final RestAuthenticationEntryPoint entryPoint;
     private final RestLoginSuccessHandler successHandler;
     private final RestLoginFailureHandler failureHandler;
+
+    @Autowired
+    public SecurityConfig(ApplicationUserDetailsService applicationUserDetailsService, RestAuthenticationEntryPoint entryPoint, RestLoginSuccessHandler successHandler, RestLoginFailureHandler failureHandler) {
+        this.applicationUserDetailsService = applicationUserDetailsService;
+        this.entryPoint = entryPoint;
+        this.successHandler = successHandler;
+        this.failureHandler = failureHandler;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -60,7 +68,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
                 .deleteCookies("USER_LOGGED")
-                .logoutSuccessHandler((request, response, authentication) -> response.setStatus(200))
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setStatus(200);
+                })
                 .invalidateHttpSession(true)
                 .and()
                 .headers()

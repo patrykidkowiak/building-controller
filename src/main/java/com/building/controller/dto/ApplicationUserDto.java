@@ -5,6 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
+
 public class ApplicationUserDto {
 
     private Long id;

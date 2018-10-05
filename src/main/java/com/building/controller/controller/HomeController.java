@@ -39,6 +39,7 @@ public class HomeController {
     @GetMapping(path = "/homes", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Collection<Home>> getAllHomes(Authentication authentication) {
         Long userId = authenticationService.getUserData(authentication.getName()).getId();
+        System.out.println(authentication.getName());
         return ResponseEntity.ok(homeService.findHomesByUserId(userId));
     }
 

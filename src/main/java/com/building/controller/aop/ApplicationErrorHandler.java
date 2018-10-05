@@ -37,4 +37,14 @@ public class ApplicationErrorHandler {
     public ResponseEntity handleHomeNotFoundException() {
         return ResponseEntity.notFound().build();
     }
+
+    @ExceptionHandler(RoomNotFoundException.class)
+    public ResponseEntity handleRoomNotFoundException() {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(BulbNotFoundException.class)
+    public ResponseEntity handleBulbNotFoundException() {
+        return ResponseEntity.notFound().build();
+    }
 }

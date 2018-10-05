@@ -1,8 +1,18 @@
 package com.building.controller.model;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+
 import javax.persistence.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @Entity
+@Configuration
+@EnableScheduling
 public class Bulb {
     private Long id;
     private String bulbName;
@@ -61,4 +71,5 @@ public class Bulb {
     public void setSilentMode(SilentMode silentMode) {
         this.silentMode = silentMode;
     }
+
 }

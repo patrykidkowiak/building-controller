@@ -23,13 +23,9 @@ import java.util.Optional;
 @RequestMapping("/api/v1")
 public class RoomController {
     private BaseRoomService baseRoomService;
-    private BaseHomeService baseHomeService;
-    private AuthenticationService authenticationService;
 
-    public RoomController(BaseRoomService baseRoomService, BaseHomeService baseHomeService, AuthenticationService authenticationService) {
+    public RoomController(BaseRoomService baseRoomService) {
         this.baseRoomService = baseRoomService;
-        this.baseHomeService = baseHomeService;
-        this.authenticationService = authenticationService;
     }
 
     @GetMapping(path = "/room/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

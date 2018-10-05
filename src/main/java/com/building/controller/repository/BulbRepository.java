@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BulbRepository extends CrudRepository<Bulb, Long> {
-
+    Iterable<Bulb> findByRoomId(long id);
 }

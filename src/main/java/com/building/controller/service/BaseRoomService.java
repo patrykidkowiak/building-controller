@@ -4,6 +4,7 @@ import com.building.controller.exception.HomeNotFoundException;
 import com.building.controller.model.Home;
 import com.building.controller.model.Room;
 import com.building.controller.repository.RoomRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,12 +12,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BaseRoomService implements RoomService {
     private final RoomRepository roomRepository;
-
-    public BaseRoomService(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
 
     @Override
     public Room findRoomById(long id) {

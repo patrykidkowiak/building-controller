@@ -3,6 +3,7 @@ package com.building.controller.service;
 import com.building.controller.exception.HomeNotFoundException;
 import com.building.controller.model.Home;
 import com.building.controller.repository.HomeRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,13 +11,10 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BaseHomeService implements HomeService {
 
     private final HomeRepository homeRepository;
-
-    public BaseHomeService(HomeRepository homeRepository) {
-        this.homeRepository = homeRepository;
-    }
 
     @Override
     public Home findHomeById(long id) {
