@@ -13,7 +13,7 @@ PLC (Programmable Logic Controller) will read this data and control the electric
 
 ## built with:
 * java 8
-* spring
+* spring boot
 * hibernate
 * maven
 * MySQL
