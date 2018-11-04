@@ -1,7 +1,7 @@
 # BuildingController
 backend part of Building Controller application
 
-[Angular part of project](https://github.com/patrykidkowiak/building-controller-angular).
+[angular part of project](https://github.com/patrykidkowiak/building-controller-angular)
 
 the target of the project is to create a Web Application to control the electrical installation in a smart-building
 
