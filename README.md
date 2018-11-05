@@ -17,6 +17,7 @@ PLC (Programmable Logic Controller) will read this data and control the electric
 * hibernate
 * maven
 * MySQL
+* lombok
 
 ### also:
 * JUnit tests
